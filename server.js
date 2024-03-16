@@ -1,8 +1,25 @@
 const express =require('express');
 const fs = require('fs');
 const app = express();
+const port = 8080;
+const http = require('http');
 
 let globalPhoneNumber;
+
+const server = http.createServer((req, res) => {
+  
+  const filePath = path.join(__dirname, 'chafua.html');
+  
+  fs.readFile(filePath, (err, data) => {
+    if (err) {
+      res.writeHead(500);
+      res.end('Error loading index.html');
+    } else {
+      res.writeHead(200, { 'Content-Type': 'text/html' });
+      res.end(data);
+  
+
+
 
 // Function to search for a specific value given by the user
 function searchForValue(searchKey, searchValue) {
@@ -194,8 +211,11 @@ import('node-fetch')
             });
         });
 
-// Start the server
-const port = 3000;
+  }
+  });
+});
+
+
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
